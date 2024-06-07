@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>{{ config('app.name') }}</title>
+
+	<x-seo />
+
+	@stack('styles')
+	@stack('libs')
+	@vite('resources/css/app.js')
+	<script>
+		if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+				'(prefers-color-scheme: dark)').matches)) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark')
+
+		}
+	</script>
+</head>
+
+<body class="dark:bg-gray-900">
+
+	{{ $slot }}
+
+	@stack('scripts')
+
+	@include('partials._darkmode')
+</body>
+
+</html>

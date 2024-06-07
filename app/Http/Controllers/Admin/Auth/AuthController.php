@@ -9,6 +9,8 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return 'reaching';
+        $data = [
+            'title' => 'Admin Login'
+        ];
     }
 }
