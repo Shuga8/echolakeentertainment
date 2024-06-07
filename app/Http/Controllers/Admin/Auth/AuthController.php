@@ -12,5 +12,7 @@ class AuthController extends Controller
         $data = [
             'title' => 'Admin Login'
         ];
+
+        return view('admin.auth.login')->with($data);
     }
 }
