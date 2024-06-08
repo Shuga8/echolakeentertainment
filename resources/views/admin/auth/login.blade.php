@@ -4,7 +4,7 @@
 		<div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
 			<a class="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white" href="/">
 				<img class="mr-2 h-8 w-8" src="{{ asset('assets/img/logo.png') }}" alt="logo">
-				{{ config('app.name') }}
+				{{-- {{ config('app.name') }} --}}
 			</a>
 			<div
 				class="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
@@ -12,25 +12,33 @@
 					<h1 class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
 						Admin Login
 					</h1>
-					<form class="space-y-4 md:space-y-6" action="#">
+					<form class="space-y-4 md:space-y-6" action="{{ route('admin.auth.authenticate') }}" method="POST">
+						@csrf
 						<div>
 							<label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="email">Email</label>
 							<input
 								class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-								id="email" name="email" type="email" placeholder="email@mail.com" required="">
+								id="email" name="email" type="email" placeholder="email@mail.com">
+
+							@error('email')
+								<p class="my-1 text-red-700">{{ $message }}</p>
+							@enderror
 						</div>
 						<div>
 							<label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="password">Password</label>
 							<input
 								class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-								id="password" name="password" type="password" placeholder="••••••••" required="">
+								id="password" name="password" type="password" placeholder="••••••••">
+							@error('password')
+								<p class="my-1 text-red-700">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="flex items-center justify-between">
 							<div class="flex items-start">
 								<div class="flex h-5 items-center">
 									<input
 										class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
-										id="remember" name="remember" type="checkbox" aria-describedby="remember" required="">
+										id="remember" name="remember" type="checkbox" aria-describedby="remember">
 								</div>
 								<div class="ml-3 text-sm">
 									<label class="text-gray-500 dark:text-gray-300" for="remember">Remember me</label>
