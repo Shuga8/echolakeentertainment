@@ -22,15 +22,7 @@
 		}
 	</style>
 
-	<section class="temp__screen-wrapper"
-		style="
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                justify-content: space-around;
-                align-items: center;
-                align-content: center;
-            ">
+	<section class="temp__screen-wrapper" style="display: block; padding: 0px 5px">
 		<div class="temp__logo"
 			style="
                     width: 100px;
@@ -64,7 +56,7 @@
                     width: 100%;
                     max-width: 550px;
                     padding: 5px;
-                    margin: 0px 4px;
+                    margin: 0px auto;
                 ">
 			<div class="temp__content-body"
 				style="
@@ -92,7 +84,7 @@
                             line-height: 2.5;
                             padding: 0 10px;
                         ">
-					{!! $data['message'] !!}
+					{{ html_entity_decode($data['message']) }}
 
 					<div class="temp__content-body-message-inner" style="margin: 10px 0px">
 						<h3
@@ -119,10 +111,10 @@
 				<div class="social-icons"
 					style="
                             margin: 0px 0px 30px 0px;
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: center !important;
-                        ">
+                            text-align: left;
+                            width: 100%;
+                        "
+					align="left">
 					<a href="">
 						<img src="http://weekly.grapestheme.com/notify/img/social/color/facebook.png" alt=""
 							style="
@@ -164,7 +156,7 @@
 					<p
 						style="
                                 text-transform: uppercase;
-                                text-align: center;
+                                text-align: left;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
@@ -173,7 +165,7 @@
 
 					<p
 						style="
-                                text-align: center;
+                                text-align: left;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
@@ -183,7 +175,7 @@
 					<p
 						style="
                                 text-transform: uppercase;
-                                text-align: center;
+                                text-align: left;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
