@@ -31,7 +31,7 @@
                     overflow: hidden;
                     border-radius: 50%;
                 ">
-			<img src="https://echolakeentertainment.org/assets/logo.jpg" alt=""
+			<img src="https://echolakeentertainment.org/file_assets/logo.jpg" alt=""
 				style="
                         display: block;
                         width: 100%;

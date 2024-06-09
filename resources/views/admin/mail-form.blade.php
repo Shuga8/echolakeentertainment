@@ -7,6 +7,7 @@
 		</h1>
 
 
+		<div class="border-green-600 p-3">message</div>
 
 
 		<form class="w-full" method="POST" action="{{ route('admin.mail.send') }}">

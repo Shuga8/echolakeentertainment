@@ -23,6 +23,8 @@
 
 <body class="dark:bg-gray-900">
 
+	<x-alert />
+
 	@stack('styles')
 
 	{{ $slot }}
