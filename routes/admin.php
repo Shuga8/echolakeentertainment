@@ -7,6 +7,7 @@ Route::namespace('Auth')->name('auth.')->group(function () {
     Route::controller('AuthController')->group(function () {
         Route::get('', 'index')->name('login')->middleware('admin.guest');
         Route::post('/auth', 'login')->name('authenticate');
+        Route::get('/logout', 'logout')->name('logout');
     });
 });
 

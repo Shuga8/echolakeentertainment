@@ -36,4 +36,14 @@ class AuthController extends Controller
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
+
+    public function logout(Request $request)
+    {
+        auth('admin')->logout();
+
+        $request->session()->forget('admin'); // Remove user-related session data
+        $request->session()->regenerateToken();
+
+        return redirect(route('admin.auth.login'))->with('success', 'sign out successfull.');
+    }
 }
