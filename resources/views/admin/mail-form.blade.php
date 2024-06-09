@@ -22,7 +22,7 @@
 						for="template-1">
 						<div class="block">
 							<div class="w-full text-lg font-semibold">Dynamic</div>
-							<div class="w-full">Good for small websites</div>
+							<div class="w-full">Template One</div>
 						</div>
 
 					</label>
@@ -34,7 +34,7 @@
 						for="template-2">
 						<div class="block">
 							<div class="w-full text-lg font-semibold">Generic 3D</div>
-							<div class="w-full">3D mail template coming soon</div>
+							<div class="w-full">coming soon!!!</div>
 						</div>
 
 					</label>

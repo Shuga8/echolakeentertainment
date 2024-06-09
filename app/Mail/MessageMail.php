@@ -29,7 +29,7 @@ class MessageMail extends Mailable implements ShouldQueue
     {
         return new Envelope(
             subject: $this->data['subject'],
-            to: $this->data['email']
+            from: config('mail.username')
         );
     }
 
@@ -39,7 +39,7 @@ class MessageMail extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: "mail.{$this->data['template']}",
+            view: "mails.{$this->data['template']}",
         );
     }
 

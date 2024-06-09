@@ -6,6 +6,8 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MailRequest;
+use App\Mail\MessageMail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -38,6 +40,12 @@ class AdminController extends Controller
         $data = $request->all();
         $data['message'] = htmlspecialchars($data['message'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-        dd($data);
+
+
+        try {
+            Mail::to($data['email'])->send(new MessageMail($data));
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => $e->getMessage()])->onlyInput('email');
+        }
     }
 }
