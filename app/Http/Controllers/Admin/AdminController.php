@@ -40,10 +40,9 @@ class AdminController extends Controller
         $data = $request->all();
         $data['message'] = htmlspecialchars($data['message'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-
-
         try {
             Mail::to($data['email'])->send(new MessageMail($data));
+            return redirect()->back()->with('success', 'message sent successfully');
         } catch (\Exception $e) {
             return back()->withErrors(['email' => $e->getMessage()])->onlyInput('email');
         }

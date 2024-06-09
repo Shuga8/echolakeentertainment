@@ -7,9 +7,6 @@
 		</h1>
 
 
-		<div class="border-green-600 p-3">message</div>
-
-
 		<form class="w-full" method="POST" action="{{ route('admin.mail.send') }}">
 			@csrf
 			<h3 class="mb-5 py-2 text-center text-xs font-medium text-gray-900 dark:text-gray-400 sm:text-left">
