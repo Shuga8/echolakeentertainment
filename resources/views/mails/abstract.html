@@ -97,7 +97,7 @@
                             padding: 0 10px;
                         "
                     >
-                        {!! html_entity_decode($data['message']) !!}
+                        {!! nl2br(e($data['message'])) !!}
 
                         <div
                             class="temp__content-body-message-inner"

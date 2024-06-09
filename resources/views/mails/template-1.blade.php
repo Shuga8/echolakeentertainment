@@ -84,7 +84,7 @@
                             line-height: 2.5;
                             padding: 0 10px;
                         ">
-					{{ html_entity_decode($data['message']) }}
+					{!! nl2br(e($data['message'])) !!}
 
 					<div class="temp__content-body-message-inner" style="margin: 10px 0px">
 						<h3
@@ -111,10 +111,10 @@
 				<div class="social-icons"
 					style="
                             margin: 0px 0px 30px 0px;
-                            text-align: left;
+                            text-align: center;
                             width: 100%;
                         "
-					align="left">
+					align="center">
 					<a href="">
 						<img src="http://weekly.grapestheme.com/notify/img/social/color/facebook.png" alt=""
 							style="
@@ -156,7 +156,7 @@
 					<p
 						style="
                                 text-transform: uppercase;
-                                text-align: left;
+                                text-align: center;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
@@ -165,7 +165,7 @@
 
 					<p
 						style="
-                                text-align: left;
+                                text-align: center;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
@@ -175,7 +175,7 @@
 					<p
 						style="
                                 text-transform: uppercase;
-                                text-align: left;
+                                text-align: center;
                                 font-size: 13px;
                                 margin: 0px 0px 8px 0px;
                             ">
