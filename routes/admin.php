@@ -14,5 +14,6 @@ Route::middleware('admin')->group(function () {
     Route::controller('AdminController')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('mail', 'showMailForm')->name('mailForm');
+        Route::post('mail/send', 'mail')->name('mail.send');
     });
 });

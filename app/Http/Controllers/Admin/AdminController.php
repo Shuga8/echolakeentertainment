@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MailRequest;
 
 class AdminController extends Controller
 {
@@ -29,5 +30,14 @@ class AdminController extends Controller
         ];
 
         return view('admin.mail-form')->with($data);
+    }
+
+    public function mail(MailRequest $request)
+    {
+
+        $data = $request->all();
+        $data['message'] = htmlspecialchars($data['message'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        dd($data);
     }
 }

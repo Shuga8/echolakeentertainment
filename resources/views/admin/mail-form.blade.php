@@ -9,17 +9,17 @@
 
 
 
-		<form class="w-full" action="POST">
+		<form class="w-full" method="POST" action="{{ route('admin.mail.send') }}">
 			@csrf
 			<h3 class="mb-5 py-2 text-center text-xs font-medium text-gray-900 dark:text-gray-400 sm:text-left">
 				Choose an email template
 			</h3>
 			<ul class="grid w-full gap-6 md:grid-cols-5">
 				<li>
-					<input class="peer hidden" id="hosting-small" name="hosting" type="radio" value="hosting-small" checked required />
+					<input class="peer hidden" id="template-1" name="template" type="radio" value="template-1" checked required />
 					<label
 						class="inline-flex w-full cursor-pointer items-center justify-between rounded-lg border border-gray-200 bg-white p-5 text-gray-500 hover:bg-gray-100 hover:text-gray-600 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:peer-checked:text-blue-500"
-						for="hosting-small">
+						for="template-1">
 						<div class="block">
 							<div class="w-full text-lg font-semibold">Dynamic</div>
 							<div class="w-full">Good for small websites</div>
@@ -28,10 +28,10 @@
 					</label>
 				</li>
 				<li>
-					<input class="peer hidden" id="hosting-big" name="hosting" type="radio" value="hosting-big">
+					<input class="peer hidden" id="template-2" name="template" type="radio" value="template-2" disabled>
 					<label
 						class="inline-flex w-full cursor-pointer items-center justify-between rounded-lg border border-gray-200 bg-white p-5 text-gray-500 hover:bg-gray-100 hover:text-gray-600 peer-checked:border-blue-600 peer-checked:text-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:peer-checked:text-blue-500"
-						for="hosting-big">
+						for="template-2">
 						<div class="block">
 							<div class="w-full text-lg font-semibold">Generic 3D</div>
 							<div class="w-full">3D mail template coming soon</div>
@@ -46,7 +46,7 @@
 				<label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="email">Recipient Email
 					Address
 				</label>
-				<div class="relative mb-6">
+				<div class="relative mb-2">
 					<div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
 						<svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor" viewBox="0 0 20 16">
@@ -59,9 +59,12 @@
 						class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
 						id="email" name="email" type="email" placeholder="name@address.com">
 				</div>
+				@error('email')
+					<p class="py-1 text-xs text-red-700">{{ $message }}</p>
+				@enderror
 
 				<label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="subject">Subject</label>
-				<div class="relative mb-6">
+				<div class="relative mb-2">
 					<div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
 
 						<svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +80,12 @@
 						id="subject" name="subject" type="text" placeholder="Mail Subject">
 				</div>
 
+				@error('subject')
+					<p class="py-1 text-xs text-red-700">{{ $message }}</p>
+				@enderror
+
 				<label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white" for="message">Message</label>
-				<div class="mb-4 w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
+				<div class="mb-2 w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
 					<div class="flex items-center justify-between border-b px-3 py-2 dark:border-gray-600">
 						<div class="flex flex-wrap items-center divide-gray-200 dark:divide-gray-600 sm:divide-x sm:rtl:divide-x-reverse">
 							<div class="flex items-center space-x-1 rtl:space-x-reverse sm:pe-4">
@@ -202,9 +209,12 @@
 						<label class="sr-only" for="editor">Publish post</label>
 						<textarea
 						 class="block w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
-						 id="message" name="message" rows="8" placeholder="Write a message..." required></textarea>
+						 id="message" name="message" rows="8" placeholder="Write a message..."></textarea>
 					</div>
 				</div>
+				@error('message')
+					<p class="mb-4 py-1 text-xs text-red-700">{{ $message }}</p>
+				@enderror
 
 				<button class="rounded-md bg-cyan-700 px-6 py-2 text-sm font-semibold uppercase text-white">Send</button>
 
