@@ -8,8 +8,6 @@
 	<title>{{ config('app.name') . " - $title" }}</title>
 
 	<x-seo />
-
-	@stack('styles')
 	@stack('libs')
 	@vite(['resources/js/app.js'])
 	<script>
@@ -24,6 +22,8 @@
 </head>
 
 <body class="dark:bg-gray-900">
+
+	@stack('styles')
 
 	{{ $slot }}
 
