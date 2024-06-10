@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->string('admin_ip')->nullable();
             $table->string('city')->nullable();
+            $table->string('country')->nullable();
             $table->string('country_code')->nullable();
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('admin_id')
                 ->references('id')
-                ->on('admin')
+                ->on('admins')
                 ->onDelete('cascade');
         });
     }
