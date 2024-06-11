@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MailRequest;
 use App\Mail\MessageMail;
+use App\Models\AdminLogin;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
@@ -46,5 +47,19 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return back()->withErrors(['email' => $e->getMessage()])->onlyInput('email');
         }
+    }
+
+    public function logins()
+    {
+        $logins = AdminLogin::paginate(10);
+        $admin = Admin::where('id', auth('admin')->user()->id)->first();
+
+        $data = [
+            'title' => 'Admin | All Logins',
+            'admin' => $admin,
+            'logins' => $logins
+        ];
+
+        return view('admin.logins')->with($data);
     }
 }

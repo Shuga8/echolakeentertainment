@@ -14,6 +14,7 @@ Route::namespace('Auth')->name('auth.')->group(function () {
 Route::middleware('admin')->group(function () {
     Route::controller('AdminController')->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('logins', 'logins')->name('logins');
         Route::get('mail', 'showMailForm')->name('mailForm');
         Route::post('mail/send', 'mail')->name('mail.send');
     });
